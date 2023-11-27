@@ -1,3 +1,5 @@
-main(){
+main() {
   print("Hello World");
+
+  print("Hello Dart");
 }

@@ -1,33 +1,50 @@
 //Hint 2 내용 추가.
 main() {
-  List<String> players = ['Player1', 'Player2', 'Player3', 'Player4'];
+  List<String> players = ['player1', 'player2', 'player3', 'player4'];
 
-  int currentPlayerIndex = 0;
-  int clapCount = 0;
-  int roolCount = 0;
-  int ahhCount = 0;
+  int currentplayerindex = 0;
+  int clapcount = 0;
+  int roolcount = 0;
+  int ahhcount = 0;
 
-  List<int> clapCountsByPlayer = [0, 0, 0, 0];
+  List<int> clapcountsbyplayer = [0, 0, 0, 0];
 
   for (int i = 1; i <= 100; i++) {
-    String currentPlayer = players[currentPlayerIndex];
+    String currentplayer = players[currentplayerindex];
 
     if (i % 30 == 0) {
-      ahhCount++;
-      print("$currentPlayer : ahh");
+      ahhcount++;
+      print('$currentplayer : ahh');
     } else if (i % 3 == 0) {
-      clapCount++;
-      print("$currentPlayer : clap");
+      print('$currentplayer : clap');
+      clapcount++;
+      clapcountsbyplayer[currentplayerindex]++;
     } else if (i % 10 == 0) {
-      roolCount++;
-      print("$currentPlayer : rool");
+      roolcount++;
+      print('$currentplayer : rool');
     } else {
-      print("$currentPlayer : $i");
+      print('$currentplayer : $i');
     }
-    currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+    currentplayerindex = (currentplayerindex + 1) % players.length;
   }
 
-  print("\nclap 의 총 갯수 : ${clapCount}");
-  print("rool 의 총 갯수 : ${roolCount}");
-  print("ahh 의 총 갯수 : ${ahhCount}");
+
+  print('\nclap 의 총 갯수 : ${clapcount}');
+  print('rool 의 총 갯수 : ${roolcount}');
+  print('ahh 의 총 갯수 : ${ahhcount}');
+
+  int maxclapcnt = 0;
+  String playerwithmaxclap = '';
+
+  for (int i = 0; i < players.length; i++) {
+    int cnt = clapcountsbyplayer[i];
+    print('${players[i]} : $cnt');
+
+    if (cnt > maxclapcnt) {
+      maxclapcnt = cnt;
+      playerwithmaxclap = players[i];
+    }
+  }
+  print('\n가장 많은 clap을 출력한 플레이어 : ${playerwithmaxclap}');
+
 }

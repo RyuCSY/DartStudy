@@ -1,0 +1,30 @@
+mixin Flyable on Animal {
+  void fly() {
+    print('I am flying!');
+  }
+}
+
+class Animal {
+  String name;
+
+  Animal(this.name);
+}
+
+class Bird extends Animal with Flyable {
+  // Bird는 Animal의 모든 속성과 메소드를 가지며,
+  // Flyable mixin에서 제공하는 fly() 메소드도 가지고 있다.
+
+  Bird(String name) : super(name);
+}
+
+class Dog extends Animal {
+  Dog(super.name);
+}
+
+void main() {
+  var bird = Bird('참새'); // "참새"라는 이름을 가진 Bird 객체 생성
+  bird.fly(); // "I am flying!"을 출력합니다.
+
+  var dog = Dog('뽀삐'); // "뽀삐"라는 이름을 가진 dog 객체 생성
+  // dog.fly(); // dog 도 Animal을 상속하지만, Flyable 을 with 하지 않아 fly() 함수를 호출 할 수 없다.
+}

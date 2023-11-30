@@ -21,15 +21,17 @@ class Cleric {
    *  또한, 이 메소드는 인수가 없고, 리턴 값도 없다.
    */
   void selfAid() {
+    final int reducedMp = 5;
+
     print('$name 은(는) selfAid 를 시전 하였다.');
 
-    if (mp < 5) {
+    if (mp < reducedMp) {
       print('그러나 MP 부족으로 실패하였다.');
     } else {
-      mp -= 5;
+      mp -= reducedMp;
       hp = MAX_OF_HP;
 
-      print('$name 은(는) MP 5를 소모하여 hp $MAX_OF_HP 를 회복 하였다.');
+      print('$name 은(는) MP $reducedMp 를 소모하여 hp $MAX_OF_HP 를 회복 하였다.');
     }
   }
 
@@ -58,7 +60,7 @@ class Cleric {
       mp = MAX_OF_MP;
     }
 
-    print('$name 은(는) $sec 초의 기도 끝에 $ret 만큼 mp 를 회복 하였다. 현재 mp $mp');
+    print('$name 은(는) $sec 초의 기도 끝에 $ret 만큼 MP 를 회복 하였다. 현재 mp $mp');
 
     return ret;
   }

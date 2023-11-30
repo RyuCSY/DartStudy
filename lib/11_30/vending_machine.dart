@@ -1,3 +1,4 @@
+import 'dart:io';
 /**
  * 매운맛 - 자판기.
  */
@@ -37,9 +38,9 @@ class VendingMachine {
       product.quantity--;
 
       print('[${product.name} 구매 성공] 가격: ${product.price}원, 거스름돈: $balance원, 남은 수량: ${product.quantity}개');
-    } else if (product.quantity == 0) {
-      print('[${product.name} 구매 실패] 수량이 부족합니다. 가격: ${product.price}원, 잔액: $balance원, 남은 수량: ${product.quantity}개');
-    } else {
+    } else if(product.quantity == 0) {
+      print( '[${product.name} 구매 실패] 수량이 부족합니다. 가격: ${product.price}원, 잔액: $balance원, 남은 수량: ${product.quantity}개');
+    } else  {
       print('[${product.name} 구매 실패] 금액이 부족합니다. 가격: ${product.price}원, 잔액: $balance원, 남은 수량: ${product.quantity}개');
     }
   }
@@ -57,6 +58,8 @@ class VendingMachine {
 }
 
 main() {
+  bool useManual = true;
+
   var machine = VendingMachine([
     Product('초콜릿', 500, 5),
     Product('빼빼로', 600, 5),
@@ -66,7 +69,40 @@ main() {
 
   machine.balance = 5000;
 
-  print(machine);
-  machine.buy(1);
-  print(machine);
+  if (!useManual) {
+    print(machine);
+    machine.buy(1);
+    print(machine);
+  } else {
+    int index;
+    String input = '';
+
+
+    do {
+      machine.printMenu();
+      print('원하는 상품의 번호를 입력 하세요. 잔액${machine.balance}, 종료 exit 입력.');
+      try {
+        input = stdin.readLineSync()!;
+        index = int.parse(input);
+      } catch (e) {
+        index = 0;
+
+        if (input.trim().toLowerCase().toLowerCase() == 'exit')
+          break;
+
+        print('$input \t잘못 입력하셨습니다..');
+        continue;
+      }
+
+      if (index >= machine.productList.length) {
+        print('잘못 입력하셨습니다..');
+      }else{
+        machine.buy(index);
+      }
+
+    } while (index != 999);
+
+    print('이용해 주셔서 감사합니다.');
+
+  }
 }

@@ -25,4 +25,14 @@ void main() {
   print(out);
 
   //forEach where 등 list 관련 함수 공부 필요.
+
+  print(add(3, 4));
+  print(addLambda(3, 4));
 }
+
+int add(int a, int b) {
+  return a + b;
+}
+
+//한줄짜리 함수는 바디 없이 람다로 대체 가능.
+int addLambda(int a, int b) => a + b;

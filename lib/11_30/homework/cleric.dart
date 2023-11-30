@@ -10,7 +10,7 @@ main() {
     cleric.selfAid();
   }
 
-  for (int i = 0; i < 11; i++) {
+  for (int i = 0; i < 22; i++) {
     cleric.pray(i);
   }
 

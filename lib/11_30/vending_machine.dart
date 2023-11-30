@@ -74,35 +74,30 @@ main() {
     machine.buy(1);
     print(machine);
   } else {
+    int exitCode = 999;
     int index;
-    String input = '';
-
 
     do {
       machine.printMenu();
-      print('원하는 상품의 번호를 입력 하세요. 잔액${machine.balance}, 종료 exit 입력.');
+      print('원하는 상품의 번호를 입력 하세요. 잔액${machine.balance}, 종료 $exitCode 입력.');
       try {
-        input = stdin.readLineSync()!;
-        index = int.parse(input);
+        index = int.parse(stdin.readLineSync()!);
       } catch (e) {
         index = 0;
-
-        if (input.trim().toLowerCase().toLowerCase() == 'exit')
-          break;
-
-        print('$input \t잘못 입력하셨습니다..');
+        print('잘못 입력하셨습니다..');
         continue;
       }
 
+      if (index == exitCode) {
+        break;
+      }
       if (index >= machine.productList.length) {
         print('잘못 입력하셨습니다..');
-      }else{
+      } else {
         machine.buy(index);
       }
-
-    } while (index != 999);
+    } while (index != exitCode);
 
     print('이용해 주셔서 감사합니다.');
-
   }
 }

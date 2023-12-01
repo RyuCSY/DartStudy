@@ -37,11 +37,14 @@ class VendingMachine {
       balance -= product.price;
       product.quantity--;
 
-      print('[${product.name} 구매 성공] 가격: ${product.price}원, 거스름돈: $balance원, 남은 수량: ${product.quantity}개');
-    } else if(product.quantity == 0) {
-      print( '[${product.name} 구매 실패] 수량이 부족합니다. 가격: ${product.price}원, 잔액: $balance원, 남은 수량: ${product.quantity}개');
-    } else  {
-      print('[${product.name} 구매 실패] 금액이 부족합니다. 가격: ${product.price}원, 잔액: $balance원, 남은 수량: ${product.quantity}개');
+      print(
+          '[${product.name} 구매 성공] 가격: ${product.price}원, 거스름돈: $balance원, 남은 수량: ${product.quantity}개');
+    } else if (product.quantity == 0) {
+      print(
+          '[${product.name} 구매 실패] 수량이 부족합니다. 가격: ${product.price}원, 잔액: $balance원, 남은 수량: ${product.quantity}개');
+    } else {
+      print(
+          '[${product.name} 구매 실패] 금액이 부족합니다. 가격: ${product.price}원, 잔액: $balance원, 남은 수량: ${product.quantity}개');
     }
   }
 

@@ -59,7 +59,6 @@ main() {
     totRool += player.rool;
   }
 
-
   print("\nclap 의 총 갯수 : ${totClap}");
   print("rool 의 총 갯수 : ${totRool}");
   print("ahh 의 총 갯수 : ${totAhh}");

@@ -13,5 +13,7 @@ main() {
     Cleric('3서스', mp: 4),
     // D) 이 클래스는 Cleric() 과 같이 이름을 지정하지 않는 경우에는 인스턴스화 할 수 없다고 한다. (이름이 없는 성직자는 존재 할 수 없음)
     Cleric('4서스'),
-  ].forEach((cleric) {print(cleric);});
+  ].forEach((cleric) {
+    print(cleric);
+  });
 }

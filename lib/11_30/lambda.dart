@@ -21,7 +21,9 @@ void main() {
   print(out);
   out = '';
 //람다식
-  intList.where((num) => num.isEven).forEach((integer) => out += '$integer, '); //integer == 2, 4,  각 각
+  intList
+      .where((num) => num.isEven)
+      .forEach((integer) => out += '$integer, '); //integer == 2, 4,  각 각
   print(out);
 
   //forEach where 등 list 관련 함수 공부 필요.

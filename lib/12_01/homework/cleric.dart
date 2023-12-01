@@ -69,7 +69,7 @@ class Cleric {
   }
 
   /// hp 와 mp 의 상한선 초과 여부 검사 및 값 보정.
-  void validate(){
+  void validate() {
     hp = (hp > MAX_OF_HP) ? MAX_OF_HP : hp;
     mp = (mp > MAX_OF_MP) ? MAX_OF_MP : mp;
   }

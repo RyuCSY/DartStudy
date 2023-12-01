@@ -28,7 +28,6 @@ main() {
     currentplayerindex = (currentplayerindex + 1) % players.length;
   }
 
-
   print('\nclap 의 총 갯수 : ${clapcount}');
   print('rool 의 총 갯수 : ${roolcount}');
   print('ahh 의 총 갯수 : ${ahhcount}');
@@ -46,5 +45,4 @@ main() {
     }
   }
   print('\n가장 많은 clap을 출력한 플레이어 : ${playerwithmaxclap}');
-
 }

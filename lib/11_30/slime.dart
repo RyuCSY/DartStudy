@@ -36,7 +36,7 @@ class Npc {
   }
 }
 
-void findWinner(Npc npc1, Npc npc2){
+void findWinner(Npc npc1, Npc npc2) {
   if (npc1.health > 0) {
     print('\n${npc2.name} is defeated! ${npc1.name} wins!');
   } else {
@@ -58,5 +58,4 @@ main() {
   }
 
   findWinner(hero, slime);
-
 }

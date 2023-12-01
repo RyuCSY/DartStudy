@@ -15,7 +15,6 @@ class IronManMK3 extends IronMan {
   IronManMK3(String name, int powerLevel, this.flayHeight)
       : super(name, powerLevel);
 
-
   @override
   void shoot() {
     print('$name is shooting Laser!');

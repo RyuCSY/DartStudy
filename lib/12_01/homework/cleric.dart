@@ -20,7 +20,7 @@ class Cleric {
   ///
   /// A)~D) 까지 사용 예시는 아래 링크
   /// ```
-  /// <a href="#">여기를 확인 하세요.</a>
+  /// <a href="https://github.com/RyuCSY/DartStudy/blob/master/lib/12_01/homework/test_main.dart">여기를 확인 하세요.</a>
   /// ```html
   ///
   Cleric(

@@ -1,6 +1,10 @@
 [연습문제 11-3][homework1]<br><br>
-[연습문제 12-2][homework2]
+[연습문제 12-2][homework2]<br><br>
+[연습문제 12-3][homework3]<br><br>
+[연습문제 12-4][homework4]<br><br>
 
 
 [homework1]: https://github.com/RyuCSY/DartStudy/blob/15d861985fab0a2ce2e41b632b90f9327166a8ef/lib/12_05/inheritance/slime.dart#L28-L43
 [homework2]: https://github.com/RyuCSY/DartStudy/blob/master/lib/12_05/abstract_class_interface/12-2.png
+[homework3]: https://github.com/RyuCSY/DartStudy/blob/master/lib/12_05/thing.dart
+[homework4]: https://github.com/RyuCSY/DartStudy/blob/master/lib/12_05/abstract_class_interface/assets/tangible_asset.dart

@@ -10,5 +10,5 @@ abstract interface class Thing {
   double getWeight();
 
   /// 무게 입력.
-  double setWeight(double value);
+  Thing setWeight(double value);
 }

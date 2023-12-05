@@ -1,4 +1,4 @@
-import 'tangible_asset.dart';
+import 'assets/tangible_asset.dart';
 
 class Computer extends TangibleAsset {
   String maker;

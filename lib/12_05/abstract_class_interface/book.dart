@@ -1,5 +1,4 @@
-import 'computer.dart';
-import 'tangible_asset.dart';
+import 'assets/tangible_asset.dart';
 
 class Book extends TangibleAsset {
   String _isbn;

@@ -12,11 +12,11 @@ package 스타크래프트 {
       파괴()
     }
     
-    interface 생물 {
+    interface 생물 << (M,#FF7700) mixin >> {
         치료받다()
     }
     
-    interface 기계 {
+    interface 기계 << (M,#FF7700) mixin >> {
         수리받다()
     }
     
@@ -66,12 +66,12 @@ package 스타크래프트.유닛들.테란유닛들 {
   class 탱크 extends 테란기계유닛
   class 마린 extends 테란생물유닛
   class 매딕 extends 테란생물유닛 {
-    치료하다(생물)
+    치료하다()
   }
 
   class SCV extends 테란기계유닛 implements 스타크래프트.생물 {
         자원채취()
-        수리하다(기계)
+        수리하다()
   }
 
 hide members

@@ -7,12 +7,12 @@ package starcraft {
       +void death()
     }
   
-    interface Building {
+    interface Building << (M,#FF7700) mixin >> {
       +void build()
       +void destroy()
     }
     
-    interface Bionic {
+    interface Bionic << (M,#FF7700) mixin >> {
         +int receiveTreatment(Medic healer)
     }
     

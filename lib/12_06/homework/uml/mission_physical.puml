@@ -2,21 +2,21 @@
 
 package starcraft {
 
-  interface unit{
-      created()
-      death()
+  interface Unit{
+      +void created()
+      +void death()
     }
   
     interface Building {
-      +build()
-      +destroy()
+      +void build()
+      +void destroy()
     }
     
     interface Bionic {
-        +receiveTreatment(Medic healer)
+        +int receiveTreatment(Medic healer)
     }
     
-    interface Machine {
+    interface Mechanic {
         +receiveRepair(SCV repairman)
     }
 
@@ -27,12 +27,12 @@ package starcraft {
 
   class Terran extends StarcraftObject
   class Zerg extends StarcraftObject implements starcraft.Bionic {
-    +hpRecovery()
+    +void hpRecovery()
   }
 
   class Protoss extends StarcraftObject {
-    -shield
-    +shieldRecovery()
+    -int shield
+    +void shieldRecovery()
   }
 
 note top of Zerg: 요구사항=유닛, 건물 모두 생물, 자동 회복 기능, 메딕 치료 불가.
@@ -46,26 +46,26 @@ hide StarcraftObject methods
 
 package starcraft.units {
 
-  class ZergUnit extends starcraft.Zerg implements starcraft.unit
+  class ZergUnit extends starcraft.Zerg implements starcraft.Unit
 
 hide members
 note bottom of ZergUnit: 별다른 요구사항이 없으므로 하위 유닛은 설계/구현 제외.
 }
 
 package starcraft.units.terranUnits {
-  class TerranMachineUnit extends starcraft.Terran implements starcraft.Machine
-  class TerranBionicUnit extends starcraft.Terran implements starcraft.Bionic
+  class TerranMechanicUnit extends starcraft.Terran implements starcraft.Unit, starcraft.Mechanic
+  class TerranBionicUnit extends starcraft.Terran implements starcraft.Unit, starcraft.Bionic
 
-  class Vulture extends TerranMachineUnit
-  class Tank extends TerranMachineUnit
+  class Vulture extends TerranMechanicUnit
+  class Tank extends TerranMechanicUnit
   class Marine extends TerranBionicUnit
   class Medic extends TerranBionicUnit {
-    heal(Bionic target)
+    +int heal(Bionic target)
   }
 
-  class SCV extends TerranMachineUnit implements starcraft.Bionic {
-        extractResource()
-        repair(Machine target)
+  class SCV extends TerranMechanicUnit implements starcraft.Bionic {
+    +int extractResource()
+    +int repair(Mechanic target)
   }
 
 hide members
@@ -77,17 +77,17 @@ note top of Medic: 요구사항=생물유닛과 SCV 가능, 저그 건물은 치
 
 package starcraft.units.protossunits {
 
-    class ProtossBionicUnit extends starcraft.Protoss implements starcraft.Bionic
-    class ProtossMachineUnit extends starcraft.Protoss implements starcraft.Machine
+    class ProtossBionicUnit extends starcraft.Protoss implements starcraft.Unit, starcraft.Bionic
+    class ProtossMechanicUnit extends starcraft.Protoss implements starcraft.Unit, starcraft.Mechanic
 
     class Zealot extends ProtossBionicUnit
-    class Dragun extends ProtossMachineUnit
+    class Dragun extends ProtossMechanicUnit
 hide members
 }
 
 package starcraft.buildings{
 
-  class TerranBuilding extends starcraft.Terran implements starcraft.Building, starcraft.Machine
+  class TerranBuilding extends starcraft.Terran implements starcraft.Building, starcraft.Mechanic
   class ZergBuilding extends starcraft.Zerg implements starcraft.Building
   class ProtossBuilding extends starcraft.Protoss implements starcraft.Building
 

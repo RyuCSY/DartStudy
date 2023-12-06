@@ -1,8 +1,8 @@
-[연습문제 11-3][homework1]<br><br>
-[연습문제 12-2][homework2]<br><br>
+[연습문제 11-3 = 독 슬라임][homework1]<br><br>
+[연습문제 12-2 = 답안지][homework2]<br><br>
 [연습문제 12-2 코드 구현1][homework2-1], [코드 상속코드2][homework2-2] <br><br>
-[연습문제 12-3][homework3]<br><br>
-[연습문제 12-4][homework4]<br><br>
+[연습문제 12-3 = Thing 선언][homework3]<br><br>
+[연습문제 12-4 = Thing 구현][homework4]<br><br>
 <br><br>
 [연습문제 11-3 사용 예제][example1]<br><br>
 [연습문제 12-4 사용 예제][example2]<br><br>

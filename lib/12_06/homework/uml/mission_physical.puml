@@ -1,0 +1,107 @@
+@startuml
+
+package starcraft {
+
+  interface unit{
+      created()
+      death()
+    }
+  
+    interface Building {
+      +build()
+      +destroy()
+    }
+    
+    interface Bionic {
+        +receiveTreatment(Medic healer)
+    }
+    
+    interface Machine {
+        +receiveRepair(SCV repairman)
+    }
+
+    class StarcraftObject {
+        +String name
+        -int hp
+      }
+
+  class Terran extends StarcraftObject
+  class Zerg extends StarcraftObject implements starcraft.Bionic {
+    +hpRecovery()
+  }
+
+  class Protoss extends StarcraftObject {
+    -shield
+    +shieldRecovery()
+  }
+
+note top of Zerg: 요구사항=유닛, 건물 모두 생물, 자동 회복 기능, 메딕 치료 불가.
+note top of Protoss: 요구사항=유닛, 건물 모두 방어막 소유 및 자동회복 가능.
+hide fields
+hide Terran members
+show Protoss members
+show StarcraftObject fields
+hide StarcraftObject methods
+}
+
+package starcraft.units {
+
+  class ZergUnit extends starcraft.Zerg implements starcraft.unit
+
+hide members
+note bottom of ZergUnit: 별다른 요구사항이 없으므로 하위 유닛은 설계/구현 제외.
+}
+
+package starcraft.units.terranUnits {
+  class TerranMachineUnit extends starcraft.Terran implements starcraft.Machine
+  class TerranBionicUnit extends starcraft.Terran implements starcraft.Bionic
+
+  class Vulture extends TerranMachineUnit
+  class Tank extends TerranMachineUnit
+  class Marine extends TerranBionicUnit
+  class Medic extends TerranBionicUnit {
+    heal(Bionic target)
+  }
+
+  class SCV extends TerranMachineUnit implements starcraft.Bionic {
+        extractResource()
+        repair(Machine target)
+  }
+
+hide members
+show Medic methods
+show SCV methods
+note bottom of SCV: 요구사항=자원을 채취할 수 있으며, 기계 유닛의 수리 가능.
+note top of Medic: 요구사항=생물유닛과 SCV 가능, 저그 건물은 치료불가.
+}
+
+package starcraft.units.protossunits {
+
+    class ProtossBionicUnit extends starcraft.Protoss implements starcraft.Bionic
+    class ProtossMachineUnit extends starcraft.Protoss implements starcraft.Machine
+
+    class Zealot extends ProtossBionicUnit
+    class Dragun extends ProtossMachineUnit
+hide members
+}
+
+package starcraft.buildings{
+
+  class TerranBuilding extends starcraft.Terran implements starcraft.Building, starcraft.Machine
+  class ZergBuilding extends starcraft.Zerg implements starcraft.Building
+  class ProtossBuilding extends starcraft.Protoss implements starcraft.Building
+
+  class 설계제외 << (.,#FEFFDD)  >> #FEFFDD {
+    별다른 요구사항이 없으므로 하위 건물은 설계/구현 제외.
+    만약 설계시 용도 세분화 필요. (생산용, 업그레이드용, 인구수용, 기타등등..)
+  }
+
+TerranBuilding -down- 설계제외
+ZergBuilding -down- 설계제외
+ProtossBuilding -down- 설계제외
+
+hide members
+show 설계제외 members
+}
+
+@enduml

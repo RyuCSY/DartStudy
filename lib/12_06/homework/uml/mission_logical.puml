@@ -1,0 +1,113 @@
+@startuml
+
+package 스타크래프트 {
+
+  interface 유닛{
+      탄생()
+      죽음()
+    }
+  
+    interface 건물 {
+      건설()
+      파괴()
+    }
+    
+    interface 생물 {
+        치료받다()
+    }
+    
+    interface 기계 {
+        수리받다()
+    }
+    
+    class 스타객체 {
+        이름
+        체력
+      }
+
+  class 테란 extends 스타객체
+  class 저그 extends 스타객체 implements 스타크래프트.생물 {
+    체력회복()
+  }
+
+  class 프로토스 extends 스타객체 {
+    방어막
+    방어막회복()
+  }
+
+note top of 저그: 요구사항=유닛, 건물 모두 생물, 자동 회복 기능, 메딕 치료 불가.
+'  note 명령어로 특정 위치에 메모 가능.타겟의 top, left, right, bottom 지정 가능.
+note top of 프로토스: 요구사항=유닛, 건물 모두 방어막 소유 및 자동회복 가능.
+hide 테란 members
+'  위 명령어로 테란 클래스만 멤버 숨기기 가능.
+hide fields
+'  위 명령어로 해당 패키지의 모든 클래스의 필드 숨기기 가능.
+show 프로토스 members
+show 스타객체 fields
+hide 스타객체 methods
+'  스타객체는 함수 없이 필드만 보이게...
+}
+
+package 스타크래프트.유닛들 {
+
+  class 저그유닛 extends 스타크래프트.저그 implements 스타크래프트.유닛
+  class 테란유닛 extends 스타크래프트.테란 implements 스타크래프트.유닛
+  class 토스유닛 extends 스타크래프트.프로토스 implements 스타크래프트.유닛
+
+hide members
+note left of 저그유닛: 별다른 요구사항이 없으므로 하위 유닛은 설계/구현 제외.
+}
+
+package 스타크래프트.유닛들.테란유닛들 {
+  class 테란기계유닛 extends 스타크래프트.유닛들.테란유닛 implements 스타크래프트.기계
+  class 테란생물유닛 extends 스타크래프트.유닛들.테란유닛 implements 스타크래프트.생물
+
+  class 벌처 extends 테란기계유닛
+  class 탱크 extends 테란기계유닛
+  class 마린 extends 테란생물유닛
+  class 매딕 extends 테란생물유닛 {
+    치료하다(생물)
+  }
+
+  class SCV extends 테란기계유닛 implements 스타크래프트.생물 {
+        자원채취()
+        수리하다(기계)
+  }
+
+hide members
+show 매딕 methods
+show SCV methods
+note bottom of SCV: 요구사항=자원을 채취할 수 있으며, 기계 유닛의 수리 가능.
+note top of 매딕: 요구사항=생물유닛과 SCV 가능, 저그 건물은 치료불가.
+}
+
+package 스타크래프트.유닛들.토스유닛들 {
+
+    class 토스생물유닛 extends 스타크래프트.유닛들.토스유닛 implements 스타크래프트.생물
+    class 토스기계유닛 extends 스타크래프트.유닛들.토스유닛 implements 스타크래프트.기계
+
+    class 질럿 extends 토스생물유닛
+    class 드라군 extends 토스기계유닛
+hide members
+}
+
+package 스타크래프트.건물들{
+
+  class 테란건물 extends 스타크래프트.테란 implements 스타크래프트.건물, 스타크래프트.기계
+  class 저그건물 extends 스타크래프트.저그 implements 스타크래프트.건물
+  class 토스건물 extends 스타크래프트.프로토스 implements 스타크래프트.건물
+
+  class 설계제외 << (.,#FEFFDD)  >> #FEFFDD {
+    별다른 요구사항이 없으므로 하위 건물은 설계/구현 제외.
+    만약 설계시 용도 세분화 필요. (생산용, 업그레이드용, 인구수용, 기타등등..)
+  }
+
+테란건물 -down- 설계제외
+저그건물 -down- 설계제외
+토스건물 -down- 설계제외
+
+hide members
+show 설계제외 members
+}
+
+@enduml

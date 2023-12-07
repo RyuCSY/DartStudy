@@ -6,7 +6,7 @@ import 'starcraft_buildings.dart';
 import 'starcraft_units.dart';
 
 main() {
-  logicTest();
+   logicTest();
 }
 
 void healTest(Bionic target){
@@ -57,6 +57,11 @@ void logicTest() {
 
   Dragun dragun = Dragun();
   // healTest(dragun); // dragun 은 기계라서 호출불가.
+
+  // 검증 서로 수리
+  repairTest(SCV());
+  healTest(scv);
+
 }
 
 void unitTest() {

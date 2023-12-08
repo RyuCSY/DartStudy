@@ -4,7 +4,9 @@
 abstract class Asset {
   String _name;
 
-  Asset(this._name);
+  Asset({
+    required String name,
+  }) : _name = name;
 
   String get name => _name;
 }

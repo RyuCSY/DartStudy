@@ -6,10 +6,9 @@ class Book extends TangibleAsset {
   String get isbn => _isbn;
 
   Book({
-    required String name,
-    required int price,
-    required String color,
+    required super.name,
+    required super.price,
+    required super.color,
     required String isbn,
-  })  : _isbn = isbn,
-        super(name: name, price: price, color: color);
+  }) : _isbn = isbn;
 }

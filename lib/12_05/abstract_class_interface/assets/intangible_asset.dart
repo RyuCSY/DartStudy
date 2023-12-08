@@ -7,7 +7,7 @@ abstract class IntangibleAsset extends Asset {
   int price;
 
   IntangibleAsset({
-    required String name,
+    required super.name,
     required this.price,
-  }) : super(name);
+  });
 }

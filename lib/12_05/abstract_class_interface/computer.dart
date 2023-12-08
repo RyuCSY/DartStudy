@@ -4,9 +4,9 @@ class Computer extends TangibleAsset {
   String maker;
 
   Computer({
-    required String name,
-    required int price,
-    required String color,
+    required super.name,
+    required super.price,
+    required super.color,
     required this.maker,
-  }) : super(name: name, price: price, color: color);
+  });
 }

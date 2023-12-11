@@ -142,3 +142,7 @@ fabric.properties
 # End of https://www.toptal.com/developers/gitignore/api/androidstudio,dart
 
 .idea/*
+
+## 깃 초기화 명령어
+# git rm -f --cached -r .
+# git add .

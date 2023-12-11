@@ -113,6 +113,7 @@ main() {
   var strReadData = saveFile.readAsStringSync();
 
   print('\n저장된 파일 내용 = ${strReadData}');
+  print('파일 경로 = ${saveFile.absolute.path}');
 
   Department readData = Department.fromJson(strReadData);
   print('\n읽어온 객체 = ${readData}');

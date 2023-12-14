@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:collection/collection.dart';
 
 class Trader {
   String name;
@@ -95,11 +96,13 @@ main() {
     print(transaction);
   });
 
+  print(transactions.map((e) => 22).max);
+
 // 7. 전체 트랜잭션 중 최대값은 얼마인가?
   Transaction maxTransaction=  transactions.reduce((t1, t2) => (t1.value == max(t1.value, t2.value)) ? t1 : t2);
   print('\n7. 전체 트랜잭션 중 최대값은 얼마인가?');
   print(maxTransaction.value);
-
+  print(transactions.map((e) => e.value).max);
 
 // 8. 전체 트랜잭션 중 최소값은 얼마인가?
   Transaction minTransaction=  transactions.reduce((t1, t2) => (t1.value == min(t1.value, t2.value)) ? t1 : t2);

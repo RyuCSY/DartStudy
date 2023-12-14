@@ -1,4 +1,11 @@
 class MaskInfo {
+  int? _count;
+  List<Store>? _stores;
+
+  int get count => _count ?? 0;
+
+  List<Store> get stores => _stores ?? [];
+
   MaskInfo({
     int? count,
     List<Store>? stores,
@@ -17,13 +24,6 @@ class MaskInfo {
     }
   }
 
-  int? _count;
-  List<Store>? _stores;
-
-  int get count => _count ?? 0;
-
-  List<Store> get stores => _stores ?? [];
-
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['count'] = _count;
@@ -35,6 +35,37 @@ class MaskInfo {
 }
 
 class Store {
+  String? _addr;
+  String? _code;
+  String? _createdAt;
+  double? _lat;
+  double? _lng;
+  String? _name;
+  String? _remainStat;
+  String? _stockAt;
+  String? _type;
+
+  String get addr => _addr ?? '';
+
+  String get code => _code ?? '';
+
+  String get createdAt => _createdAt ?? '';
+
+  double get lat => _lat ?? 0;
+
+  double get lng => _lng ?? 0;
+
+  String get name => _name ?? '';
+
+  String get remainStat => _remainStat ?? '';
+
+  String get stockAt => _stockAt ?? '';
+
+  String get type => _type ?? '';
+
+  bool get hasNull =>
+      [_addr, _code, _createdAt, _lat, _lng, _name, _remainStat, _stockAt, _type].contains(null);
+
   Store({
     String? addr,
     String? code,
@@ -68,37 +99,6 @@ class Store {
     _stockAt = json['stock_at'];
     _type = json['type'];
   }
-
-  String? _addr;
-  String? _code;
-  String? _createdAt;
-  double? _lat;
-  double? _lng;
-  String? _name;
-  String? _remainStat;
-  String? _stockAt;
-  String? _type;
-
-  String get addr => _addr ?? '';
-
-  String get code => _code ?? '';
-
-  String get createdAt => _createdAt ?? '';
-
-  double get lat => _lat ?? 0;
-
-  double get lng => _lng ?? 0;
-
-  String get name => _name ?? '';
-
-  String get remainStat => _remainStat ?? '';
-
-  String get stockAt => _stockAt ?? '';
-
-  String get type => _type ?? '';
-
-  bool get hasNull =>
-      [_addr, _code, _createdAt, _lat, _lng, _name, _remainStat, _stockAt, _type].contains(null);
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

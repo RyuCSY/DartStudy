@@ -1,6 +1,32 @@
 import 'dart:convert';
 
 class MovieDetail {
+  bool? adult;
+  String? backdropPath;
+  dynamic belongsToCollection;
+  int? budget;
+  List<Genres>? genres;
+  String? homepage;
+  int? id;
+  String? imdbId;
+  String? originalLanguage;
+  String? originalTitle;
+  String? overview;
+  double? popularity;
+  String? posterPath;
+  List<ProductionCompanies>? productionCompanies;
+  List<ProductionCountries>? productionCountries;
+  String? releaseDate;
+  int? revenue;
+  int? runtime;
+  List<SpokenLanguages>? spokenLanguages;
+  String? status;
+  String? tagline;
+  String? title;
+  bool? video;
+  double? voteAverage;
+  int? voteCount;
+
   MovieDetail({
     this.adult,
     this.backdropPath,
@@ -77,32 +103,6 @@ class MovieDetail {
     voteCount = json['vote_count'];
   }
 
-  bool? adult;
-  String? backdropPath;
-  dynamic belongsToCollection;
-  int? budget;
-  List<Genres>? genres;
-  String? homepage;
-  int? id;
-  String? imdbId;
-  String? originalLanguage;
-  String? originalTitle;
-  String? overview;
-  double? popularity;
-  String? posterPath;
-  List<ProductionCompanies>? productionCompanies;
-  List<ProductionCountries>? productionCountries;
-  String? releaseDate;
-  int? revenue;
-  int? runtime;
-  List<SpokenLanguages>? spokenLanguages;
-  String? status;
-  String? tagline;
-  String? title;
-  bool? video;
-  double? voteAverage;
-  int? voteCount;
-
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['adult'] = adult;
@@ -148,6 +148,10 @@ class MovieDetail {
 }
 
 class SpokenLanguages {
+  String? englishName;
+  String? iso6391;
+  String? name;
+
   SpokenLanguages({
     this.englishName,
     this.iso6391,
@@ -160,10 +164,6 @@ class SpokenLanguages {
     name = json['name'];
   }
 
-  String? englishName;
-  String? iso6391;
-  String? name;
-
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['english_name'] = englishName;
@@ -174,6 +174,9 @@ class SpokenLanguages {
 }
 
 class ProductionCountries {
+  String? iso31661;
+  String? name;
+
   ProductionCountries({
     this.iso31661,
     this.name,
@@ -184,9 +187,6 @@ class ProductionCountries {
     name = json['name'];
   }
 
-  String? iso31661;
-  String? name;
-
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['iso_3166_1'] = iso31661;
@@ -196,6 +196,11 @@ class ProductionCountries {
 }
 
 class ProductionCompanies {
+  int? id;
+  String? logoPath;
+  String? name;
+  String? originCountry;
+
   ProductionCompanies({
     this.id,
     this.logoPath,
@@ -210,11 +215,6 @@ class ProductionCompanies {
     originCountry = json['origin_country'];
   }
 
-  int? id;
-  String? logoPath;
-  String? name;
-  String? originCountry;
-
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
@@ -226,6 +226,9 @@ class ProductionCompanies {
 }
 
 class Genres {
+  int? id;
+  String? name;
+
   Genres({
     this.id,
     this.name,
@@ -235,9 +238,6 @@ class Genres {
     id = json['id'];
     name = json['name'];
   }
-
-  int? id;
-  String? name;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

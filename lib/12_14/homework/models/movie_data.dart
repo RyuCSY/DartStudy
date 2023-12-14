@@ -1,6 +1,12 @@
 import 'dart:convert';
 
 class MovieData {
+  Dates? dates;
+  int? page;
+  List<MovieItem>? itemList;
+  int? totalPages;
+  int? totalResults;
+
   MovieData({
     this.dates,
     this.page,
@@ -22,12 +28,6 @@ class MovieData {
     totalResults = json['total_results'];
   }
 
-  Dates? dates;
-  int? page;
-  List<MovieItem>? itemList;
-  int? totalPages;
-  int? totalResults;
-
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     if (dates != null) {
@@ -44,6 +44,21 @@ class MovieData {
 }
 
 class MovieItem {
+  bool? adult;
+  String? backdropPath;
+  List<int>? genreIds;
+  int? id;
+  String? originalLanguage;
+  String? originalTitle;
+  String? overview;
+  double? popularity;
+  String? posterPath;
+  String? releaseDate;
+  String? title;
+  bool? video;
+  double? voteAverage;
+  int? voteCount;
+
   MovieItem({
     this.adult,
     this.backdropPath,
@@ -77,21 +92,6 @@ class MovieItem {
     voteAverage = json['vote_average'];
     voteCount = json['vote_count'];
   }
-
-  bool? adult;
-  String? backdropPath;
-  List<int>? genreIds;
-  int? id;
-  String? originalLanguage;
-  String? originalTitle;
-  String? overview;
-  double? popularity;
-  String? posterPath;
-  String? releaseDate;
-  String? title;
-  bool? video;
-  double? voteAverage;
-  int? voteCount;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

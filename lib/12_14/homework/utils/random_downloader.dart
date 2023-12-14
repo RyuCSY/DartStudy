@@ -7,13 +7,14 @@ import '../models/movie_data.dart';
 const base_img_url = 'https://image.tmdb.org/t/p/w220_and_h330_face';
 //const base_img_url = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2';
 
-class RandomDownloader {
+class ImageRandomDownloader {
   _RandomUrlGenerator generator;
 
-  RandomDownloader(MovieData movieData) : this.generator = _RandomUrlGenerator(movieData);
+  ImageRandomDownloader(MovieData movieData) : this.generator = _RandomUrlGenerator(movieData);
 
-  Future<File> downloadRandomFile() {
-    return generator.downloadRandomFile();
+  Future<File> download() async {
+    _UrlItem item = generator.nextItem();
+    return await fileDownloader.downloadFile(item.url, fileName: item.fName);
   }
 }
 
@@ -44,11 +45,6 @@ class _RandomUrlGenerator {
     } while (usedIndexSet.contains(retVal));
     usedIndexSet.add(retVal);
     return retVal;
-  }
-
-  Future<File> downloadRandomFile() async {
-    _UrlItem item = nextItem();
-    return await fileDownloader.downloadFile(item.url, fileName: item.fName);
   }
 }
 

@@ -9,11 +9,11 @@ import 'package:path/path.dart';
 main() async {
   await measureTime(practice4());
 
-  RandomDownloader random = RandomDownloader(await getMovieData());
+  ImageRandomDownloader randomDownloader = ImageRandomDownloader(await getMovieData());
 
-  await measureTime(practice5(random));
+  await measureTime(practice5(randomDownloader));
 
-  await measureTime(practice5Phase2(random));
+  await measureTime(practice5Phase2(randomDownloader));
 
   print(await practice6());
 }
@@ -32,21 +32,21 @@ Future<String> practice4() => Future.sync(() async {
       return '';
     });
 
-Future<String> practice5(RandomDownloader random) => Future.sync(() async {
+Future<String> practice5(ImageRandomDownloader random) => Future.sync(() async {
       print('\n5-1 순차적 다운 시작');
       for (int i = 0; i < 3; i++) {
-        printFileInfo(await random.downloadRandomFile());
+        printFileInfo(await random.download());
       }
 
       return '순차적 ';
     });
 
-Future<String> practice5Phase2(RandomDownloader random) => Future.sync(() async {
+Future<String> practice5Phase2(ImageRandomDownloader random) => Future.sync(() async {
       print('\n5-2 병렬 다운 시작');
       var imgList = await [
-        random.downloadRandomFile(),
-        random.downloadRandomFile(),
-        random.downloadRandomFile(),
+        random.download(),
+        random.download(),
+        random.download(),
       ].wait;
 
       imgList.forEach(printFileInfo);
